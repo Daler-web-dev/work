@@ -1,0 +1,115 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background-color: #F9FBFD;
+}
+.app{
+    display: flex;
+}
+.app .screen-one {
+    width: 60%;
+    margin: 20px;
+}
+.app .screen-one .app-main {
+    display: flex;
+    width: 100%;
+}
+.app .screen-one .app-main .side-bar {
+        display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+    overflow: scroll;
+    margin-right: 10px;
+}
+.app .screen-one .app-main .side-bar .basket-item {
+    border: 1px solid blue;
+    margin: 10px;
+    min-height: 60px;
+    background-color: white;
+}
+.app .screen-one .app-main .products {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 89px;
+    grid-gap: 10px;
+    width: 100%;
+}
+.app .screen-one .search-input {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    border-radius: 12px;
+    width: 100%;
+    height: 50px;
+    padding: 0px 10px;
+    margin-bottom: 10px;
+}
+.app .screen-one .search-input button {
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}   
+.app .screen-one .search-input input {
+    width: 100%;
+    height: 30px;
+    border: none;
+    outline: none;
+}
+.app .screen-one .app-main .side-bar::-webkit-scrollbar {
+    width: 5px;
+}
+::-webkit-scrollbar-track {
+    background: #fff;
+}
+::-webkit-scrollbar-thumb {
+    background: #B0B1B2;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #999;
+}
+.app .screen-two {
+    width: 40%;
+    margin: 20px;
+}
+.app .screen-two .cart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 500px;
+    height: 385px;
+    background-color: white;
+}
+.app .screen-two .cart .coloumn {
+    width: 450px;
+    height: 355px;
+    background-color: white;
+    overflow: hidden;
+    overflow: scroll;
+}
+
+.app .screen-two .coloumn::-webkit-scrollbar {
+    width: 5px;
+}
+::-webkit-scrollbar-track {
+    background: #fff;
+}
+::-webkit-scrollbar-thumb {
+    background: #B0B1B2;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #999;
+}
+.app .screen-two .card {
+    width: 500px;
+    height: 200px;
+    margin-top: 10px;
+    border-radius: 12px;
+    background-color: #12263F;
+}
