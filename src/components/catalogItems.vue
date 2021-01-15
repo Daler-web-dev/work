@@ -11,7 +11,7 @@
 
 <script>
 export default {
-    name: 'productItem',
+    name: 'catalogItems',
     props: [
         'productValue'
     ]

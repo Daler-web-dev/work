@@ -13,11 +13,11 @@
             </div>
       </div>
         <div class="add default">
-            <span>{{transferValue.price}} сум</span>
+            <span>{{ priceToCalculate }} сум</span>
             <div class="plus-minus default">
-                <button @click="this.$emit('deletebtn', transferValue.id)">-</button>
-                <strong class="default">{{ number }}</strong>
-                <button @click="this.$emit('deletebtn', transferValue.id)">+</button>
+                <button @click="this.$emit('lessBtn', transferValue.id)">-</button>
+                <strong class="default">{{ transferValue.quantity }}</strong>
+                <button @click="this.$emit('morebtn', transferValue.id)">+</button>
             </div>
         </div>
   </div>
@@ -25,7 +25,7 @@
 
 <script>
 export default {
-    name: 'selecteditem',
+    name: 'cartItems',
     props: [
         'transferValue'
     ],

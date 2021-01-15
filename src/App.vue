@@ -59,7 +59,7 @@
 					</div>
 				</div>
 				<div class="products">
-					<productItem v-for="product of products" :key="product.id" v-bind:productValue="product" @transferToCart="pushToCart"/>
+					<catalogItems v-for="product of products" :key="product.id" v-bind:productValue="product" @transferToCart="pushToCart"/>
 				</div>
 			</div>
 		</div>
@@ -67,7 +67,7 @@
 			<div class="cart">
 				<h2>CART #1</h2>
 				<div class="coloumn">
-					<selecteditem class="cart-item" v-for="item of cart" :key="item.id" v-bind:transferValue="item" @deleteBtn="deleteproduct"/>
+					<cartItems class="cart-item" v-for="item of cart" :key="item.id" v-bind:transferValue="item" @deleteBtn="deleteproduct"/>
 				</div>
 			</div>
 			<div class="card">
@@ -78,9 +78,9 @@
 						<span>Итого к оплате</span>
 					</div>
 					<div class="price">
-						<span>{{ priceToCalculate }} сум</span>
+						<span>{{ cartTotalCost }} сум</span>
 						<span>0 сум</span>
-						<span>{{ priceToCalculate }} сум</span>
+						<span>{{ cartTotalCost }} сум</span>
 					</div>
 				</div>
 				<div class="customer-info">
@@ -152,8 +152,8 @@
 </template>
 
 <script>
-import productItem from './components/productItems'
-import selecteditem from './components/selectedItem'
+import catalogItems from './components/catalogItems'
+import cartItems from './components/cartItems'
 export default {
 data() {
     return {
@@ -163,43 +163,43 @@ data() {
 			id: Math.random(),
 			title: 'футболки с принтами',
 			price: 10,
-			quantity: 2121
+			quantity: 1
 		},
 		{
 			id: Math.random(),
 			title: 'футболки с принтами',
 			price: 10,
-			quantity: 2121
+			quantity: 1
 		},
 		{
 			id: Math.random(),
 			title: 'футболки с принтами',
 			price: 10,
-			quantity: 2121
+			quantity: 1
 		},
 		{
 			id: Math.random(),
 			title: 'футболки с принтами',
 			price: 10,
-			quantity: 2121
+			quantity: 1
 		},
 		{
 			id: Math.random(),
 			title: 'футболки с принтами',
 			price: 10,
-			quantity: 2121
+			quantity: 1
 		},
 		{
 			id: Math.random(),
 			title: 'футболки с принтами',
 			price: 10,
-			quantity: 2121
+			quantity: 1
 		},
 		{
 			id: Math.random(),
 			title: 'футболки с принтами',
 			price: 10,
-			quantity: 2121
+			quantity: 1
 		}
 	],
 	cart: [
@@ -208,7 +208,7 @@ data() {
 			number: 1,
 			title: 'футболки с принтами',
 			price: 15,
-			quantity: 2121 
+			quantity: 1 
 		}
 	],
 	bascets: [
@@ -239,16 +239,30 @@ data() {
 	]
 	}
 },
+computed: {
+	cartTotalCost() {
+		let result = []
+
+		if (this.cart.length) {
+			for(let item of this.cart) {
+				result.push(item.price * item.quantity)
+			}
+	
+			result = result.reduce(function (sum, el){
+				return sum + el
+			})
+			return result
+		} else {
+			return 0
+		}
+	}
+},
 methods: {
 	pushToCart(data) {
 		let filtered = this.products.filter(product => product.id == data)[0]
 		filtered.number = this.cart.length + 1
 		this.cart.push(filtered)
 
-		this.priceToCalculate = 0
-		for(let item of this.cart) {
-			this.priceToCalculate += parseInt(item.price)
-		}
 	},
 	deleteproduct(itemId) {
 		let deleted = this.cart.filter(item => item.id == itemId)[0]
@@ -256,8 +270,8 @@ methods: {
 	}
 },
 components: {
-	productItem,
-	selecteditem
+	catalogItems,
+	cartItems
 }
 }
 </script>
