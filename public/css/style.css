@@ -112,4 +112,53 @@ body {
     margin-top: 10px;
     border-radius: 12px;
     background-color: #12263F;
+    padding: 20px;
+}
+.app .screen-two .card .about-purse {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.app .screen-two .card .about-purse .name-of-price {
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+    color: #8095B3;
+}
+.app .screen-two .card .about-purse .price {
+    display: flex;
+    flex-direction: column;
+    color: #EBEDEF;
+    text-align: end;
+}
+.app .screen-two .card .about-purse .price span:last-child {
+    font-size: 24px;
+}
+.app .screen-two .card .customer-info {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.app .screen-two .card .customer-info .user svg{
+    height: 30px;
+    width: 30px;
+    fill: #B0B1B2;
+    padding: 5px;
+    border: 1px solid #B0B1B2;
+    margin: 5px;
+    border-radius: 5px;
+}
+.app .screen-two .card .customer-info .user svg:hover {
+    border: 1px solid white;
+    fill: white;
+}
+.app .screen-two .card .customer-info button {
+    padding: 10px;
+    width: 100px;
+    color: white;
+    background-color: #00D97E;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    cursor: pointer;
 }

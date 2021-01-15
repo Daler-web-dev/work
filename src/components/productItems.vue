@@ -1,5 +1,5 @@
 <template>
-  <div class="product-item" @click="this.$emit('toCart', productValue.id)"> 
+  <div class="product-item" @click="this.$emit('transferToCart', productValue.id)"> 
       <img src="../../public/images/alesia-kazantceva-XLm6-fPwK5Q-unsplash.png">
       <div class="description">
           <span>{{ productValue.title }}</span>
