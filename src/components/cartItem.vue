@@ -13,11 +13,11 @@
             </div>
       </div>
         <div class="add default">
-            <span>{{ priceToCalculate }} сум</span>
+            <span>количество</span>
             <div class="plus-minus default">
-                <button @click="this.$emit('lessBtn', transferValue.id)">-</button>
+                <button @click="this.$emit('changeCount', {id: transferValue.id, data: false})">-</button>
                 <strong class="default">{{ transferValue.quantity }}</strong>
-                <button @click="this.$emit('morebtn', transferValue.id)">+</button>
+                <button @click="this.$emit('changeCount', {id: transferValue.id, data: true})">+</button>
             </div>
         </div>
   </div>
@@ -25,15 +25,33 @@
 
 <script>
 export default {
-    name: 'cartItems',
+    name: 'cartItem',
     props: [
-        'transferValue'
+        'transferValue',
+        'cartTotalCost'
     ],
     data() {
         return {
             number: 1
         }
-    }
+    },
+    // computed: {
+	// cartItemTotalCost() {
+	// 	let itemResult = []
+
+	// 	if (this.cart.length) {
+	// 		for(let item of this.cart) {
+	// 			itemResult.push(item.price * item.quantity)
+	// 		}
+	
+	// 		itemResult = itemResult.reduce(function (sum, el){
+	// 			return sum + el
+	// 		})
+	// 		return itemResult
+	// 	} else {
+	// 		return 0
+	// 	}
+	// },
 }
 </script>
 
@@ -47,6 +65,10 @@ export default {
     max-width: 450px;
     height: 60px;
     background-color: white;
+    border-bottom: white 1px solid;
+}
+.cart-item:hover {
+    border-bottom: black 1px solid;
 }
 .cart-item .flex-start {
     display: flex;
@@ -68,7 +90,6 @@ export default {
     border: 1px solid black;
     border-radius: 5px;
     margin: 10px;
-
 }
 .plus-minus button {
     background: none;
@@ -77,6 +98,7 @@ export default {
     height: 100%;
     width: 20px;
     margin-right: 10px;
+    outline: none;
 }
 .plus-minus strong {
     border-left: 1px solid black;

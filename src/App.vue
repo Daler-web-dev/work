@@ -1,7 +1,7 @@
 <template>
 	<div class="app">
 		<div class="screen-one">
-			<div class="search-input">
+			<div class="search-input def-property">
 				<button>
 					<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 				width="20px" height="20px" viewBox="0 0 612.01 612.01" style="enable-background:new 0 0 612.01 612.01;"
@@ -54,12 +54,12 @@
 			</div>
 			<div class="app-main">
 				<div class="side-bar">
-					<div class="basket-item" v-for="bascet of bascets" :key="bascet.id">
-						<h3>{{ bascet.title }}</h3>
+					<div class="basket-item def-property" v-for="bascet of bascets" :key="bascet.id">
+						<span class="bascket-title">{{ bascet.title }}</span>
 					</div>
 				</div>
 				<div class="products">
-					<catalogItems v-for="product of products" :key="product.id" v-bind:productValue="product" @transferToCart="pushToCart"/>
+					<catalogItem v-for="product of products" :key="product.id" v-bind:productValue="product" @changeCount="changeCount" @transferToCart="pushToCart"/>
 				</div>
 			</div>
 		</div>
@@ -67,11 +67,11 @@
 			<div class="cart">
 				<h2>CART #1</h2>
 				<div class="coloumn">
-					<cartItems class="cart-item" v-for="item of cart" :key="item.id" v-bind:transferValue="item" @deleteBtn="deleteproduct"/>
+					<cartItem class="cart-item" v-for="item of cart" :key="item.id" v-bind:transferValue="item" @deleteBtn="deleteproduct" @changeCount="changeCount"/>
 				</div>
 			</div>
 			<div class="card">
-				<div class="about-purse">
+				<div class="about-purse def-property">
 					<div class="name-of-price">
 						<span>Всего</span>
 						<span>Скидка</span>
@@ -83,7 +83,7 @@
 						<span>{{ cartTotalCost }} сум</span>
 					</div>
 				</div>
-				<div class="customer-info">
+				<div class="customer-info def-property">
 					<div class="user">
 						<a href=""><svg id="_x31__px" enable-background="new 0 0 24 24" height="20px" viewBox="0 0 24 24" width="20px" xmlns="http://www.w3.org/2000/svg"><path d="m21.5 18h-3c-.276 0-.5-.224-.5-.5s.224-.5.5-.5h3c.827 0 1.5-.673 1.5-1.5v-7c0-.827-.673-1.5-1.5-1.5h-19c-.827 0-1.5.673-1.5 1.5v7c0 .827.673 1.5 1.5 1.5h3c.276 0 .5.224.5.5s-.224.5-.5.5h-3c-1.379 0-2.5-1.122-2.5-2.5v-7c0-1.378 1.121-2.5 2.5-2.5h19c1.379 0 2.5 1.122 2.5 2.5v7c0 1.378-1.121 2.5-2.5 2.5z"/><path d="m14.5 21h-6c-.276 0-.5-.224-.5-.5s.224-.5.5-.5h6c.276 0 .5.224.5.5s-.224.5-.5.5z"/><path d="m14.5 19h-6c-.276 0-.5-.224-.5-.5s.224-.5.5-.5h6c.276 0 .5.224.5.5s-.224.5-.5.5z"/><path d="m10.5 17h-2c-.276 0-.5-.224-.5-.5s.224-.5.5-.5h2c.276 0 .5.224.5.5s-.224.5-.5.5z"/><path d="m18.5 7c-.276 0-.5-.224-.5-.5v-4c0-.827-.673-1.5-1.5-1.5h-9c-.827 0-1.5.673-1.5 1.5v4c0 .276-.224.5-.5.5s-.5-.224-.5-.5v-4c0-1.378 1.121-2.5 2.5-2.5h9c1.379 0 2.5 1.122 2.5 2.5v4c0 .276-.224.5-.5.5z"/><path d="m16.5 24h-9c-1.379 0-2.5-1.122-2.5-2.5v-8c0-.276.224-.5.5-.5h13c.276 0 .5.224.5.5v8c0 1.378-1.121 2.5-2.5 2.5zm-10.5-10v7.5c0 .827.673 1.5 1.5 1.5h9c.827 0 1.5-.673 1.5-1.5v-7.5z"/></svg></a>
 						<a href=""><svg id="_x31_" enable-background="new 0 0 24 24" height="20px" viewBox="0 0 24 24" width="20px" xmlns="http://www.w3.org/2000/svg"><g><path d="m19.5 24h-15c-1.378 0-2.5-1.121-2.5-2.5v-19c0-1.379 1.122-2.5 2.5-2.5h11.766c.616 0 1.208.227 1.667.637l3.234 2.894c.529.474.833 1.153.833 1.864v16.105c0 1.379-1.122 2.5-2.5 2.5zm-15-23c-.827 0-1.5.673-1.5 1.5v19c0 .827.673 1.5 1.5 1.5h15c.827 0 1.5-.673 1.5-1.5v-16.105c0-.427-.182-.834-.5-1.119l-3.234-2.893c-.276-.247-.631-.383-1-.383z"/></g><g><path d="m5.5 6c-.276 0-.5-.224-.5-.5v-2c0-.276.224-.5.5-.5s.5.224.5.5v2c0 .276-.224.5-.5.5z"/></g><g><path d="m8.5 6c-.276 0-.5-.224-.5-.5v-2c0-.276.224-.5.5-.5s.5.224.5.5v2c0 .276-.224.5-.5.5z"/></g><g><path d="m11.5 6c-.276 0-.5-.224-.5-.5v-2c0-.276.224-.5.5-.5s.5.224.5.5v2c0 .276-.224.5-.5.5z"/></g><g><path d="m14.5 6c-.276 0-.5-.224-.5-.5v-2c0-.276.224-.5.5-.5s.5.224.5.5v2c0 .276-.224.5-.5.5z"/></g><g><path d="m18.5 21h-13c-.276 0-.5-.224-.5-.5v-8c0-.276.224-.5.5-.5h13c.276 0 .5.224.5.5v8c0 .276-.224.5-.5.5zm-12.5-1h12v-7h-12z"/></g></svg></a>
@@ -152,65 +152,64 @@
 </template>
 
 <script>
-import catalogItems from './components/catalogItems'
-import cartItems from './components/cartItems'
+import catalogItem from './components/catalogItem'
+import cartItem from './components/cartItem'
+
 export default {
 data() {
     return {
-	priceToCalculate: 0,
 	products: [
 		{
-			id: Math.random(),
-			title: 'футболки с принтами',
+			id: Math.random().toString().slice(2,8),
+			title: 'Футболки',
 			price: 10,
-			quantity: 1
+			quantity: 1,
+			isOnCart: false
 		},
 		{
-			id: Math.random(),
-			title: 'футболки с принтами',
-			price: 10,
-			quantity: 1
+			id: Math.random().toString().slice(2,8),
+			title: 'Майки',
+			price: 70,
+			quantity: 1,
+			isOnCart: false
 		},
 		{
-			id: Math.random(),
-			title: 'футболки с принтами',
-			price: 10,
-			quantity: 1
+			id: Math.random().toString().slice(2,8),
+			title: 'Джинсы',
+			price: 22,
+			quantity: 1,
+			isOnCart: false
 		},
 		{
-			id: Math.random(),
-			title: 'футболки с принтами',
+			id: Math.random().toString().slice(2,8),
+			title: 'с принтами',
 			price: 10,
-			quantity: 1
+			quantity: 1,
+			isOnCart: false
 		},
 		{
-			id: Math.random(),
-			title: 'футболки с принтами',
-			price: 10,
-			quantity: 1
+			id: Math.random().toString().slice(2,8),
+			title: 'Майки',
+			price: 70,
+			quantity: 1,
+			isOnCart: false
 		},
 		{
-			id: Math.random(),
-			title: 'футболки с принтами',
-			price: 10,
-			quantity: 1
+			id: Math.random().toString().slice(2,8),
+			title: 'Джинсы',
+			price: 22,
+			quantity: 1,
+			isOnCart: false
 		},
 		{
-			id: Math.random(),
-			title: 'футболки с принтами',
-			price: 10,
-			quantity: 1
+			id: Math.random().toString().slice(2,8),
+			title: 'Джинсы',
+			price: 22,
+			quantity: 1,
+			isOnCart: false
 		}
 	],
-	cart: [
-		{
-			id: Math.random(),
-			number: 1,
-			title: 'футболки с принтами',
-			price: 15,
-			quantity: 1 
-		}
-	],
+	cart: [],
 	bascets: [
 		{
 			title: 'Coments'
@@ -239,6 +238,7 @@ data() {
 	]
 	}
 },
+
 computed: {
 	cartTotalCost() {
 		let result = []
@@ -255,23 +255,30 @@ computed: {
 		} else {
 			return 0
 		}
-	}
+	},
+	
 },
+
 methods: {
 	pushToCart(data) {
 		let filtered = this.products.filter(product => product.id == data)[0]
-		filtered.number = this.cart.length + 1
+		filtered.isOnCart = true
 		this.cart.push(filtered)
-
 	},
 	deleteproduct(itemId) {
 		let deleted = this.cart.filter(item => item.id == itemId)[0]
 		this.cart.splice(this.cart.indexOf(deleted), 1)
+	},
+	changeCount(data) {
+		let filtered = this.products.filter(product => product.id == data.id)[0]
+		if(data.data) filtered.quantity++
+		else filtered.quantity--
 	}
 },
+
 components: {
-	catalogItems,
-	cartItems
+	catalogItem,
+	cartItem
 }
 }
 </script>
