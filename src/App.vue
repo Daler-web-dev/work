@@ -272,7 +272,7 @@ methods: {
 	changeCount(data) {
 		let filtered = this.products.filter(product => product.id == data.id)[0]
 		if(data.data) filtered.quantity++
-		else filtered.quantity--
+		else if (filtered.quantity != 0) filtered.quantity--
 	}
 },
 
