@@ -1,6 +1,6 @@
 <template>
 	<div class="product-item"> 
-		<img src="../../public/images/alesia-kazantceva-XLm6-fPwK5Q-unsplash.png">
+		<img src="../../public/images/10163-015_1.jpg">
 		<div class="description">
 			<span class="item-title">{{ productValue.title }}</span>
 			<span>{{ productValue.price }}сум</span>
