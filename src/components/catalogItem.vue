@@ -54,5 +54,9 @@ export default {
 }
 .plus-and-minus {
 	padding: 12px;
+	font-size: 20px;
+}
+.plus-and-minus:hover {
+	color: #FF6D00;
 }
 </style>

@@ -69,7 +69,7 @@ body {
     cursor: pointer;
 }   
 .app .screen-one .search-input input {
-    width: 100%;
+    width: 80%;
     height: 30px;
     border: none;
     outline: none;
