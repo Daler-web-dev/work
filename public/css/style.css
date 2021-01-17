@@ -5,6 +5,7 @@
 }
 body {
     background-color: #F9FBFD;
+    font-family: 'Gilroy first';
 }
 .def-property {
     display: flex;
@@ -200,4 +201,7 @@ body {
     max-width: 50vh;
     max-height: 40px;
     overflow: hidden;
+}
+.bascket-title {
+    padding-left: 10px;
 }
